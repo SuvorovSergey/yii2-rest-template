@@ -1,0 +1,10 @@
+parameters:
+    level: 8
+    paths:
+        - controllers
+        - models
+    checkMissingIterableValueType: false
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#Access to an undefined property yii\\console\\Application\|yii\\web\\Application::\$[a-zA-Z]#'
+        - '#on an unknown class Yii#'

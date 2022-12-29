@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+  php:
+    container_name: app_php
+    image: app_php
+    build:
+      context: ./docker/php
+      args:
+        REMOTE_HOST: 'host.docker.internal'
+        REMOTE_ENABLE: 1
+    volumes:
+      - ./:/var/www/html
+      - ./runtime:/var/xdebug/profiler
+
+  nginx:
+    image: nginx:latest
+    container_name: app_nginx
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+
+  database:
+    container_name: app_database
+    hostname: app_database
+    image: postgres:13.3
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - "5432:5432"
+    volumes:
+      - app_db_data:/var/lib/postgresql/data
+    networks:
+      default:
+
+volumes:
+  app_db_data:
+
+networks:
+  default:
+    name: app_network
