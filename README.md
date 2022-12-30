@@ -2,17 +2,23 @@
 
 Steps to start inside docker:
 
-1. Build images
+1. Copy .env.example to .env
+```text
+cp .env.example .env
+```
+2. Build images
 ```text
 docker compose build
 ```
-
-2. Run
+3. Run
 ```text
 docker compose up -d
 ```
-
-3. Apply migrations
+4. Install dependencies
+```text
+docker exec app_php composer install
+```
+6. Apply migrations
 ```text
 docker exec app_php php yii migrate/up
 ```
