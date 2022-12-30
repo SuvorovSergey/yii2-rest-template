@@ -1,16 +1,12 @@
-.PHONY: up run down restart build reset.cache test analyse
+.PHONY: up down build cs test analyse
 .DEFAULT_GOAL := run
 
 # start all services
-run:
-	docker-compose up -d --remove-orphans
 up:
 	docker-compose up -d --remove-orphans
 # stop service
 down:
 	docker-compose down
-# restart
-restart: | down run
 # restart with rebuild
 build: down
 	docker-compose up -d --build
@@ -23,6 +19,15 @@ cs.check:
 # run phpstan
 analyse:
 	docker exec app_php vendor/bin/phpstan analyse
+# run tests
+test: migrate.test
+	docker exec app_php vendor/bin/codecept run
 # go into container
 t:
 	gnome-terminal -- bash -c 'docker exec -it app_php bash'
+# apply migrations
+migrate:
+	docker exec app_php php yii migrate/up
+# apply migrations on test db
+migrate.test:
+	docker exec app_php php tests/bin/yii migrate/up

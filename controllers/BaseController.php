@@ -25,6 +25,5 @@ class BaseController extends Controller
 
     public function actionIndex()
     {
-
     }
 }
