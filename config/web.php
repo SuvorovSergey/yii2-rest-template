@@ -1,5 +1,6 @@
 <?php
 
+use components\web\ErrorHandler;
 use yii\web\JsonParser;
 use yii\web\JsonResponseFormatter;
 use yii\web\Response;
@@ -15,7 +16,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'homeUrl' => '/',
-    'defaultRoute' => 'base',
+    'defaultRoute' => 'api',
 
     'components' => [
         'request' => [
@@ -35,24 +36,13 @@ $config = [
                     'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
                 ],
             ],
-//            'on beforeSend' => static function ($event) {
-//                $response = $event->sender;
-//                if ($response->data !== null) {
-//                    $response->data = [
-//                        'success' => $response->isSuccessful,
-//                        'data' => $response->data,
-//                    ];
-//                    $response->statusCode = 200;
-//                    $response->format = Response::FORMAT_JSON;
-//                }
-//            },
         ],
         'cache' => [
             'class' => FileCache::class,
         ],
-//        'errorHandler' => [
-//            'errorAction' => 'base/error',
-//        ],
+        'errorHandler' => [
+            'class' => ErrorHandler::class,
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

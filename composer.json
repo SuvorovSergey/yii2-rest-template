@@ -7,7 +7,8 @@
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
         "yiisoft/yii2-symfonymailer": "~2.0.3",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "spatie/data-transfer-object": "^3.9"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -42,6 +43,14 @@
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "components\\": "components/",
+            "app\\controllers\\": "controllers/",
+            "swagger\\": "swagger/",
+            "tests\\": "tests/"
+        }
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

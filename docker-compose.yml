@@ -30,7 +30,6 @@ services:
     container_name: app_database
     hostname: app_database
     image: postgres:13.3
-    restart: always
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
