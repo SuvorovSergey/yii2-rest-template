@@ -1,4 +1,4 @@
-#Yii2 template for creating REST API backends.
+# Yii2 template for creating REST API backends.
 
 Steps to start inside docker:
 
@@ -18,7 +18,7 @@ docker compose up -d
 ```text
 docker exec app_php composer install
 ```
-6. Apply migrations
+5. Apply migrations
 ```text
 docker exec app_php php yii migrate/up
 ```
