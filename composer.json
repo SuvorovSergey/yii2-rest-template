@@ -1,6 +1,6 @@
 {
-    "name": "pied-piper/afisha",
-    "description": "Афиша",
+    "name": "suvorov/Yii2-rest-template",
+    "description": "Yii2 template for creating REST API backends",
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.1.0",
