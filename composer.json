@@ -1,5 +1,5 @@
 {
-    "name": "suvorov/Yii2-rest-template",
+    "name": "suvorov/yii2-rest-template",
     "description": "Yii2 template for creating REST API backends",
     "minimum-stability": "stable",
     "require": {

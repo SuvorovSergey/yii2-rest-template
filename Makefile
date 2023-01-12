@@ -1,5 +1,5 @@
 .PHONY: up down build cs test analyse
-.DEFAULT_GOAL := run
+.DEFAULT_GOAL := up
 
 # start all services
 up:
